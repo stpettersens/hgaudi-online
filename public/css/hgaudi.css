@@ -1,0 +1,17 @@
+.cmd, .desc {
+	padding-top: 200px;
+	font-family: "Courier New", monospace;
+	font-size: small;
+}
+.desc {
+	font-style: italic;
+}
+#command {
+	font-family: "Courier New", monospace;
+	font-weight: bold;
+}
+footer {
+	font-size: small;
+	text-align: center;
+	margin: auto;
+}
