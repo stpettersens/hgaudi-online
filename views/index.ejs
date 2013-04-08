@@ -8,10 +8,11 @@
 <link href="/css/hgaudi.css" rel="stylesheet"/>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/2.0.0/hogan.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.0/typeahead.min.js"></script>-->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/2.0.0/hogan.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.0/typeahead.min.js"></script>
+<script type="text/javascript" src="/js/upload-files.js"></script>
 <script type="text/javascript" src="/js/hgaudi-assist.js"></script>
-<script type="text/javascript" src="/js/hgaudi.js"></script>
+<script type="text/javascript" src="/js/hgaudi.min.js"></script>
 </head>
 <body>
 <div class="container" style="width: 550px;">
@@ -26,15 +27,31 @@
 			<div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px; solid #ddd;">
 				<div class="tab-pane active" id="console_t">
 				<pre id="console"></pre>
-				<div class="well" style="padding-bottom: 25px;">
+				<div class="well" style="padding-bottom: 35px;">
 				<div style="padding-top: 2px;">
 				<textarea id="command" class="span5" rows="1" style="resize: none;"></textarea>
-				<button type="submit" class="btn" id="enterCommand" style="margin-bottom: 9px;"><!-- -8px -->&raquo;&raquo;&raquo;</button>
+				<button type="submit" class="btn" id="enterCommand" style="margin-bottom: -8px;">&raquo;&raquo;&raquo;</button>
 				</div>
 				</div>
 				</div>
 				<div class="tab-pane" id="files_t">
-				<p>Place holder</p>
+				<h5>Input files</h5>
+				<div id="input-files">
+					<hr/>
+					<em>No files uploaded.</em>
+					<hr/>
+				</div>
+				<h5>Output files</h5>
+				<div id="output-files">
+					<hr/>
+					<em>No files produced.</em>
+					<hr/>
+				</div>
+				<div id="file-control">
+					<input id="ulfiles" type="file" name="files[]" multiple />
+					<button class="btn" id="ulbtn">Upload file(s)</button>
+					<button class="btn" id="delbtn">Delete file(s)</button>
+					<button class="btn" id="dlbtn" disabled="disabled">Download file(s)</button>
 				</div>
 			</div>
 		</div>

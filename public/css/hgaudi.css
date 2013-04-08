@@ -1,5 +1,4 @@
 .cmd, .desc {
-	padding-top: 200px;
 	font-family: "Courier New", monospace;
 	font-size: small;
 }
@@ -9,6 +8,10 @@
 #command {
 	font-family: "Courier New", monospace;
 	font-weight: bold;
+	background-color: #F5F5F5;
+}
+#ulfiles {
+	display: none;
 }
 footer {
 	font-size: small;
