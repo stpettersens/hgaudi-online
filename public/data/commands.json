@@ -1,0 +1,26 @@
+[
+	{
+		"command": "hgaudi -f <build file>",
+		"desc": "Load a local build file.",
+		"tokens": [
+			"hgaudi -f",
+			"-f"
+		]
+	},
+	{
+		"command": "hgaudi -v",
+		"desc": "Display program version.",
+		"tokens": [
+			"hgaudi -v",
+			"-v"
+		]
+	},
+	{
+		"command": "hgaudi -i",
+		"desc": "Display usage information.",
+		"tokens": [
+			"hgaudi -i",
+			"-i"
+		]
+	}
+]

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>hackedGaudi Online</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width-device-width, initial-scale=1.0">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/2.0.0/hogan.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.0/typeahead.min.js"></script>-->
+<script type="text/javascript" src="scripts/hgaudi.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {	
+		$("#command").focus();
+		$("#command").val("hgaudi -f build.json");
+		/*$('#command').typeahead({
+			name: 'commands-predict',
+			prefetch: 'data/commands.json',
+			template: [
+				'<span class="cmd">{{command}}</span>',
+				'<span class="desc"> {{desc}}</span>'
+			].join(''),
+			limit: 1,
+			engine: Hogan
+		});*/
+		/*$.ajax({
+			url: "LICENSE",
+		}).done(function(text) {
+			text = text.replace(/\n/g, "<br/>");
+			$("#license-text").append(text);
+		});*/
+	});
+;
+</script>
+<style type="text/css">
+.cmd, .desc {
+	padding-top: 200px;
+	font-family: "Courier New", monospace;
+	font-size: small;
+}
+.desc {
+	font-style: italic;
+}
+#command {
+	font-family: "Courier New", monospace;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container" style="width: 550px;">
+	<div class="row">
+		<h3>hackedGaudi Online</h3>
+		<p class="description" style="font-size: small;">hackedGaudi is Gaudi ported to <a href="http://www.haxe.org">Haxe</a>. Below is the JavaScript targeted build, which you can run in your browser.</p>
+		<div class="tabbable" style="margin-bottom: 18px;">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#console_t" data-toggle="tab">Console</a></li>
+				<li><a href="#files_t" data-toggle="tab">Files</a></li>
+			</ul>
+			<div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px; solid #ddd;">
+				<div class="tab-pane active" id="console_t">
+				<pre id="console"></pre>
+				<div class="well" style="padding-bottom: 25px;">
+				<div style="padding-top: 2px;">
+				<textarea id="command" class="span5" rows="1" style="resize: none;"></textarea>
+				<button type="submit" class="btn" id="enterCommand" style="margin-bottom: 9px;"><!-- -8px -->&raquo;&raquo;&raquo;</button>
+				</div>
+				</div>
+				</div>
+				<div class="tab-pane" id="files_t">
+				<p>Place holder</p>
+				</div>
+			</div>
+		</div>
+		</div>	
+	</div>
+<div id="haxe:trace"></div>
+<footer>
+	<a href="#">License</a> | <a href="#">Credits</a>
+</footer>
+</body>
+</html>
