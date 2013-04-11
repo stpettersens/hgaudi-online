@@ -8,8 +8,19 @@ function handleFileSelect(evt) {
 	var output = [];
 	for(var i = 0, f; f = files[i];  i++) {
 		alert(escape(f.name));	
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			var contents = e.target.result;
+			console.log(contents);
+		};	
+		reader.readAsText(f);
 	}
 }	
 $(document).ready(function() {
+	// Check for File APIs support.
+	if(window.File == null || window.FileReader == null || 
+	window.FileList == null | window.Blob == null) {
+		alert("The File APIs are not fully supported in this browser.");
+	}
 	document.getElementById("ulfiles").addEventListener("change", handleFileSelect, false);
 });
