@@ -7,16 +7,21 @@ $(document).ready(function() {
 			template: [
 				'<div class="popup">',
 				'<span class="cmd">{{command}}</span>',
-				'<span class="desc"> {{desc}}</span>',
+				' <span class="desc">{{desc}}</span>',
 				'</div>'
 			].join(''),
 			limit: 1,
 			engine: Hogan
 		});
 
-		$("#ulbtn").click(function() {
-			$('#ulfiles').trigger('click');
+		$("#addbtn").click(function() {
+			$('#addfiles').trigger('click');
 		});	
+
+		if($.browser.mozilla) {
+			$("#enterCommand").css("margin-top", "11px");
+			$("#enterCommand").css("height", "50px");
+		}
 
 		/*$.ajax({
 			url: "LICENSE",
