@@ -1,19 +1,17 @@
-/*
-Allow upload of files for use by online hackedGaudi.
-Based on code from http://www.html5rocks.com/en/tutorials/file/dndfiles/
-*/
 function handleFileSelect(evt) {
-	var files = evt.target.files; // FileList object; files is a FileList of File objects.
+	var socket = io.connect('http://localhost');
+	var files = evt.target.files;
 	var output = [];
 	$('#i-file-list').empty();
 	for(var i = 0, f; f = files[i];  i++) {	
 		var reader = new FileReader();
 		reader.onload = function(e) {
 			var contents = e.target.result;
-			console.log(contents);
+			socket.emit('transferFile', {contents});
 		};	
 		reader.readAsText(f);
 		$('#i-file-list').append('<p>' + escape(f.name) + '</p>');
+		$('#delbtn').removeAttr('disabled');
 	}
 }	
 $(document).ready(function() {

@@ -5,10 +5,31 @@
 .desc {
 	font-style: italic;
 }
+.container {
+	width: 550px;
+}
+.tabbable {
+	margin-bottom: 18px;
+}
+.tab-content {
+	padding-bottom: 9px;
+	border-bottom: 1px solid #DDD;
+
+}
+.well {
+	padding-bottom: 35px;
+}
+#cli {
+	padding-top: 2px;
+}
 #command {
 	font-family: "Courier New", monospace;
 	font-weight: bold;
 	background-color: #F5F5F5;
+	resize: none;
+}
+#enterCommand {
+	margin-bottom: -8px;
 }
 #addfiles {
 	display: none;

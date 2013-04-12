@@ -10,27 +10,28 @@
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/2.0.0/hogan.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.0/typeahead.min.js"></script>
-<script type="text/javascript" src="/js/upload-files.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js"></script>
+<script type="text/javascript" src="/js/manage-files.js"></script>
 <script type="text/javascript" src="/js/hgaudi-assist.js"></script>
 <script type="text/javascript" src="/js/hgaudi.min.js"></script>
 </head>
 <body>
-<div class="container" style="width: 550px;">
+<div class="container">
 	<div class="row">
 		<h3>hackedGaudi Online</h3>
 		<p class="description" style="font-size: small;">hackedGaudi is Gaudi ported to <a href="http://www.haxe.org">Haxe</a>. Below is the JavaScript targeted build, which you can run in your browser.</p>
-		<div class="tabbable" style="margin-bottom: 18px;">
+		<div class="tabbable">
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#console_t" data-toggle="tab">Console</a></li>
 				<li><a href="#files_t" data-toggle="tab">Files</a></li>
 			</ul>
-			<div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px; solid #ddd;">
+			<div class="tab-content">
 				<div class="tab-pane active" id="console_t">
 				<pre id="console"></pre>
-				<div class="well" style="padding-bottom: 35px;">
-				<div style="padding-top: 2px;">
-				<textarea id="command" class="span5" cols="10" rows="1" style="resize: none;"></textarea>
-				<button type="submit" class="btn" id="enterCommand" style="margin-bottom: -8px;">&raquo;&raquo;&raquo;</button>
+				<div class="well">
+				<div id="cli">
+				<textarea id="command" class="span5" rows="1"></textarea>
+				<button type="submit" class="btn" id="enterCommand">&raquo;&raquo;&raquo;</button>
 				</div>
 				</div>
 				</div>
@@ -50,7 +51,7 @@
 				<div id="file-control">
 					<input id="addfiles" type="file" name="files[]" multiple/>
 					<button class="btn" id="addbtn">Add file(s)</button>
-					<button class="btn" id="delbtn">Delete file(s)</button>
+					<button class="btn" id="delbtn" disabled="disabled">Delete file(s)</button>
 					<button class="btn" id="dlbtn" disabled="disabled">Download file(s)</button>
 				</div>
 			</div>

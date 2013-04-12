@@ -8,6 +8,7 @@ Released under the MIT/X11 License.
 'use strict';
 
 var express = require('express')
+, hglib = require('./lib/hglib.js')
 , hgroutes = require('./routes/hgroutes.js');
 
 var app = express.createServer();
@@ -21,4 +22,5 @@ app.set('view options', {
 	layout: false
 });
 app.get('/', hgroutes.getIndex);
+hglib.createSocket(app);
 app.listen(3000);
