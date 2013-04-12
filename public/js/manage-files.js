@@ -5,11 +5,12 @@ function handleFileSelect(evt) {
 	$('#i-file-list').empty();
 	for(var i = 0, f; f = files[i];  i++) {	
 		var reader = new FileReader();
-		reader.onload = function(e) {
+		reader.onload = function(e, files) {
 			var contents = e.target.result;
-			socket.emit('transferFile', {contents});
+			socket.emit('transferFile', {contents:contents});
 		};	
 		reader.readAsText(f);
+		socket.emit('setFilename', {filename:f.name});
 		$('#i-file-list').append('<p>' + escape(f.name) + '</p>');
 		$('#delbtn').removeAttr('disabled');
 	}
