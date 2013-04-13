@@ -34,6 +34,10 @@
 #addfiles {
 	display: none;
 }
+#i-file-list, #o-file-list {
+	font-family: "Courier New", monospace;
+	font-size: small;
+}
 footer {
 	font-size: small;
 	text-align: center;
