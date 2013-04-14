@@ -24,6 +24,7 @@ app.set('view options', {
 	layout: false
 });
 app.get('/', hgroutes.getIndex);
+app.get('/api', hgroutes.getApi);
 db.open(function() {
 	hglib.createSocket(app);
 	app.listen(3000);

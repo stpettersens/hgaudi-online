@@ -38,6 +38,9 @@
 	font-family: "Courier New", monospace;
 	font-size: small;
 }
+#viewFileModal {
+	width: 650px;
+}
 footer {
 	font-size: small;
 	text-align: center;
