@@ -23,6 +23,16 @@ $(document).ready(function() {
 			$("#enterCommand").css("height", "50px");
 		}
 
+		if($.cookie('hgaudi.token') == null) $('#cookiesNotif').modal('show');
+		$(document).on('click', '#proceed', function() {
+			$.cookie('hgaudi.token', _.guid(), { expires: 7 });
+			$('#cookiesNotif').modal('hide');
+		});
+		$(document).on('click', '#abandon', function() {
+			$.cookie('hgaudi.token', null, {path: '/'});
+			window.location.href = 'http://www.google.com';
+		})
+
 		/*$.ajax({
 			url: "LICENSE",
 		}).done(function(text) {

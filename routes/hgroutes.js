@@ -10,7 +10,6 @@ Released under the MIT/X11 License.
 var hglib = require('../lib/hglib');
 module.exports = {
 	getIndex: function(req, res) {
-		hglib.createCookie(res);
 		res.render('index');
 	},
 	getApi: function(req, res) {
