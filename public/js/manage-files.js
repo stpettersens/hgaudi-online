@@ -7,12 +7,11 @@ function loadOutputFiles() {
 	socket.emit('pullOutputFromDb', {tokenId:cookie});
 }
 function viewFile(key, filename) {
-	$('#title-filename').empty();
 	$('#title-filename').text(filename);
 	$('.prettyprint').text(file_contents[key]);
 	$('#viewFileModal').modal('show');
 }
-function handleFileSelect(evt) {
+function handleFileSelect(event) {
 	var files = evt.target.files;
 	var output = [];
 	if(!g_files_added) {
@@ -28,10 +27,10 @@ function handleFileSelect(evt) {
 			socket.emit('pushInputToDb', {});
 		};	
 		reader.readAsText(f);
-		$('#i-file-list').append('<p><a href="javascript:viewFile(' + i + ',\'' + f.name + '\');">' 
+		$('#i-file-list').append('<p><input type="checkbox" class="afile" id="file' + i + '"/>'
+		+ ' <a href="javascript:viewFile(' + i + ',\'' + f.name + '\');">' 
 		+ escape(f.name) + '</a></p>');
 		socket.emit('setFilename', {filename:escape(f.name)});
-		$('#delbtn').removeAttr('disabled');
 	}
 }
 $(document).ready(function() {
@@ -48,18 +47,18 @@ $(document).ready(function() {
 		if(data.files.length > 0) {
 			$('#i-file-list').empty();
 			for(var i = 0; i < data.files.length; i++) {
-				$('#i-file-list').append('<p><a href="javascript:viewFile(' + i + ',\'' 
+				$('#i-file-list').append('<p><input type="checkbox" class="afile" id="file' + i + '"/>'
+				+ ' <a href="javascript:viewFile(' + i + ',\'' 
 				+ data.files[i].filename + '\');">' + escape(data.files[i].filename) + '</a></p>');
 				g_files_added = true;
 				file_contents.push(data.files[i].contents);
 			}
-			$('#delbtn').removeAttr('disabled');
 		}
 	});
-	document.getElementById('addfiles')
-	.addEventListener('change', handleFileSelect, false);
-	$('body').on('shown', '#viewFileModal', function(event) {
-		console.log("pp here!");
+	$(document).on('change', '#addfiles', function(event) {
+		handleFileSelect(event);
+	});
+	$(document).on('shown', '#viewFileModal', function(event) {
 		prettyPrint();
 	});
 });
