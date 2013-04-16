@@ -1,4 +1,4 @@
-/* Veera Sundar's guid generator for Underscore.js.
+/* Veera Sundar's GUID generator for Underscore.js.
 http://veerasundar.com/blog/2013/01/underscore-js-and-guid-function/ */
  _.mixin({
         guid : function(){
