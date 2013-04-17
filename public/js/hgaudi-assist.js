@@ -31,12 +31,16 @@ $(document).ready(function() {
 		$(document).on('click', '#abandon', function() {
 			$.cookie('hgaudi.token', null, {path: '/'});
 			window.location.href = 'http://www.google.com';
-		})
-
+		});
+		
 		/*$.ajax({
 			url: "LICENSE",
 		}).done(function(text) {
 			text = text.replace(/\n/g, "<br/>");
 			$("#license-text").append(text);
 		});*/
+		showCredits();
 });
+function showCredits() {
+	$('#creditsModal').modal('show');
+}

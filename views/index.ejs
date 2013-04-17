@@ -30,10 +30,70 @@
 		This web application uses a token cookie to work.<br/>
 		The cookie only contains a GUID that is used to keep track of files
 		you upload or generate and does <strong>not</strong> gather any identifiable data
-		such as your browsing habits. </small></p>
+		such as your browsing habits.</small></p>
 		<p><small>Do you wish to continue?</small></p>
-		<button id="proceed" class="btn large">Yes, set cookie and continue. *</button>
+		<button id="proceed" class="btn large">Yes, set cookie and continue.</button>
 		<button id="abandon" class="btn large">No, do not set cookie and exit.</button>
+	</div>
+</div>
+<div id="creditsModal" class="modal hide fade">
+	<div class="modal-header">
+		<h3>Credits</h3>
+	</div>
+	<div class="modal-body">
+		<!-- Consider moving this to its own page later on. -->
+		<p>hackedGaudi Online was written by Sam Saint-Pettersen.
+		<br/>It either has made use of or actively uses:</p>
+		<hr/>
+		<h4>haxe</h4>
+		<p>Copyright &copy; 2005-2013 Haxe Foundation.
+		<br/>http://www.haxe.org</p>
+		<hr/>
+		<h4>yuicompressor</h4>
+		<p>Copyright &copy; 2013 Yahoo!, Inc.
+		<br/>http://yui.github.io/yuicompressor</p>
+		<hr/>
+		<h4>node.js</h4>
+		<p>Copyright &copy; Joyent, Inc. and other Node contributors.
+		<br/>http://www.nodejs.org</p>
+		<hr/>
+		<h4>bootstrap</h4>
+		<p>Copyright &copy; 2012 Twitter, Inc.
+		<br/>http://twitter.github.io/bootstrap</p>
+		<hr/>
+		<h4>hogan.js</h4>
+		<p>Copyright &copy; 2011 Twitter, Inc.
+		<br/>http://twitter.github.io/hogan.js</p>
+		<hr/>
+		<h4>typeahead.js</h4>
+		<p>Copyright &copy; 2013 Twitter, Inc.
+		<br/>http://twitter.github.io/typeahead.js</p>
+		<hr/>
+		<h4>jquery</h4>
+		<p>Copyright &copy; 2005, 2012 jQuery Foundation, Inc.
+		<br/>http://jquery.org</p>
+		<hr/>
+		<h4>jquery.cookie</h4>
+		<p>Copyright &copy; 2013 Klaus Hartl.
+		<br/>https://github.com/carhartl/jquery-cookie</p>
+		<hr/>
+		<h4>socket.io</h4>
+		<p>Copyright &copy; Guillermo Rauch.
+		<br/>http://socket.io</p>
+		<hr/>
+		<h4>prettify</h4>
+		<p>Copyright &copy; 2013 Google Inc.
+		<br/>https://code.google.com/p/google-code-prettify</p>
+		<hr/>
+		<h4>underscore.js</h4>
+		<p>Copyright &copy; 2009-2013 Jeremy Ashkenas, DocumentCloud.
+		<br/>http://underscorejs.org</p>
+		<hr/>
+		<h4>guid-generator</h4>
+		<p>Copyright &copy; 2013 Veera Sundar.
+		<br/>http://veerasundar.com/blog/2013/01/underscore-js-and-guid-function</p>
+		<hr/>
+		
 	</div>
 </div>
 <div id="viewFileModal" class="modal hide fade">
@@ -91,7 +151,7 @@
 	</div>
 <div id="haxe:trace"></div>
 <footer>
-	<a href="#">License</a> | <a href="#">Credits</a>
+	<a href="#">License</a> | <a href="javascript:showCredits();">Credits</a>
 </footer>
 </body>
 </html>

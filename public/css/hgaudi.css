@@ -46,3 +46,6 @@ footer {
 	text-align: center;
 	margin: auto;
 }
+.modal-body {
+	font-size: small;
+}
