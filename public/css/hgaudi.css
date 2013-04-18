@@ -8,6 +8,9 @@
 .container {
 	width: 550px;
 }
+.description {
+	font-size: small;
+}
 .tabbable {
 	margin-bottom: 18px;
 }
@@ -17,7 +20,7 @@
 
 }
 .well {
-	padding-bottom: 35px;
+	padding-bottom: 30px;
 }
 #cli {
 	padding-top: 2px;
@@ -34,18 +37,24 @@
 #addfiles {
 	display: none;
 }
-#i-file-list, #o-file-list {
+#i-file-list, #o-file-list, #licenseText {
 	font-family: "Courier New", monospace;
 	font-size: small;
 }
 #viewFileModal {
 	width: 650px;
 }
+#licenseText {
+	height: 300px;
+}
+#credits-body {
+	height: 200px;
+}
 footer {
 	font-size: small;
 	text-align: center;
 	margin: auto;
 }
-.modal-body {
+.modal-header, .modal-body {
 	font-size: small;
 }

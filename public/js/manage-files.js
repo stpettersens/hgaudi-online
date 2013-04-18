@@ -31,7 +31,6 @@ function handleFileSelect(event) {
 		reader.onload = function(e) {
 			var contents = e.target.result;	
 			file_contents.push(contents);
-			console.log("after add. " + file_contents);
 			socket.emit('setTokenId', {tokenId:cookie});
 			socket.emit('setContents', {contents:contents});
 			socket.emit('pushInputToDb', {});
@@ -61,7 +60,6 @@ $(document).ready(function() {
 				+ data.files[i].filename + '\');">' + escape(data.files[i].filename) + '</a></p>');
 				g_files_added = true;
 				file_contents.push(data.files[i].contents);
-				console.log("after popu. " + file_contents);
 			}
 		}
 	});

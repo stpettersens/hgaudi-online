@@ -36,69 +36,111 @@
 		<button id="abandon" class="btn large">No, do not set cookie and exit.</button>
 	</div>
 </div>
+<div id="licenseModal" class="modal hide fade">
+	<div class="modal-header">
+		<h3>License</h3>
+	</div>
+	<div class="modal-body">
+		<p id="licenseText">
+		hackedGaudi platform agnostic build tool<br/>
+		Copyright 2013 Sam Saint-Pettersen.<br/>
+		http://github.com/stpettersens/hackedGaudi<br/><br/>
+		</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" data-dismiss="modal" class="btn">Close</a>
+	</div>
+</div>
 <div id="creditsModal" class="modal hide fade">
 	<div class="modal-header">
 		<h3>Credits</h3>
-	</div>
-	<div class="modal-body">
-		<!-- Consider moving this to its own page later on. -->
-		<p>hackedGaudi Online was written by Sam Saint-Pettersen.
+		<p><br/>
+		hackedGaudi Online was written by Sam Saint-Pettersen.
 		<br/>It either has made use of or actively uses:</p>
-		<hr/>
+	</div>
+	<div id="credits-body" class="modal-body">
+		<!-- Consider moving this to its own page later on. -->
 		<h4>haxe</h4>
 		<p>Copyright &copy; 2005-2013 Haxe Foundation.
-		<br/>http://www.haxe.org</p>
+		<br/><a href="http://www.haxe.org">http://www.haxe.org</a></p>
 		<hr/>
 		<h4>yuicompressor</h4>
 		<p>Copyright &copy; 2013 Yahoo!, Inc.
-		<br/>http://yui.github.io/yuicompressor</p>
+		<br/><a href="http://yui.github.io/yuicompressor">http://yui.github.io/yuicompressor</a></p>
 		<hr/>
 		<h4>node.js</h4>
 		<p>Copyright &copy; Joyent, Inc. and other Node contributors.
-		<br/>http://www.nodejs.org</p>
+		<br/><a href="http://www.nodejs.org">http://www.nodejs.org</a></p>
+		<hr/>
+		<h4>express</h4>
+		<p>Copyright &copy; 2009-2011 TJ Holowaychuk.
+		<br/><a href="http://www.expressjs.com">http://www.expressjs.com</a></p>
+		<hr/>
+		<h4>ejs</h4>
+		<p>Copyright &copy; Jupiter Consulting.
+		<br/><a href="http://embeddedjs.com">http://embeddedjs.com</a></p>
+		<hr/>
+		<h4>mongodb</h4>
+		<p>Copyright &copy; 2011-2013 10-gen, Inc. &amp; Christian Kvalheim (node.js module).
+		<br/><a href="http://mongodb.org">http://mongodb.org</a></p>
 		<hr/>
 		<h4>bootstrap</h4>
 		<p>Copyright &copy; 2012 Twitter, Inc.
-		<br/>http://twitter.github.io/bootstrap</p>
+		<br/><a href="http://twitter.github.io/bootstrap">http://twitter.github.io/bootstrap</a></p>
 		<hr/>
 		<h4>hogan.js</h4>
 		<p>Copyright &copy; 2011 Twitter, Inc.
-		<br/>http://twitter.github.io/hogan.js</p>
+		<br/><a href="http://twitter.github.io/hogan.js">http://twitter.github.io/hogan.js</a></p>
 		<hr/>
 		<h4>typeahead.js</h4>
 		<p>Copyright &copy; 2013 Twitter, Inc.
-		<br/>http://twitter.github.io/typeahead.js</p>
+		<br/><a href="http://twitter.github.io/typeahead.js">http://twitter.github.io/typeahead.js</a></p>
 		<hr/>
 		<h4>jquery</h4>
 		<p>Copyright &copy; 2005, 2012 jQuery Foundation, Inc.
-		<br/>http://jquery.org</p>
+		<br/><a href="http://jquery.org">http://jquery.org</a></p>
 		<hr/>
 		<h4>jquery.cookie</h4>
 		<p>Copyright &copy; 2013 Klaus Hartl.
-		<br/>https://github.com/carhartl/jquery-cookie</p>
+		<br/><a href="http://github.com/carhartl/jquery-cookie">http://github.com/carhartl/jquery-cookie</a></p>
+		<hr/>
+		<h4>cookies</h4>
+		<p>Copyright &copy; 2012 Jed Schmidt.
+		<br/><a href="http://github.com/jed/cookies">https://github.com/jed/cookies</a></p>
 		<hr/>
 		<h4>socket.io</h4>
-		<p>Copyright &copy; Guillermo Rauch.
-		<br/>http://socket.io</p>
+		<p>Copyright &copy; 2011 Guillermo Rauch.
+		<br/><a href="http://socket.io">http://socket.io</a></p>
 		<hr/>
 		<h4>prettify</h4>
 		<p>Copyright &copy; 2013 Google Inc.
-		<br/>https://code.google.com/p/google-code-prettify</p>
+		<br/><a href="http://code.google.com/p/google-code-prettify">http://code.google.com/p/google-code-prettify</a></p>
 		<hr/>
 		<h4>underscore.js</h4>
 		<p>Copyright &copy; 2009-2013 Jeremy Ashkenas, DocumentCloud.
-		<br/>http://underscorejs.org</p>
+		<br/><a href="http://underscorejs.org">http://underscorejs.org</a></p>
 		<hr/>
-		<h4>guid-generator</h4>
+		<h4>guid generator</h4>
 		<p>Copyright &copy; 2013 Veera Sundar.
-		<br/>http://veerasundar.com/blog/2013/01/underscore-js-and-guid-function</p>
+		<br/><a href="http://veerasundar.com/blog/2013/01/underscore-js-and-guid-function">
+		http://veerasundar.com/blog/2013/01/underscore-js-and-guid-function</a></p>
 		<hr/>
-		
+		<h4>google ajax cdn</h4>
+		<p>Content delivery network.
+		<br/><a href="https://developers.google.com/speed/libraries/devguide">
+		https://developers.google.com/speed/libraries/devguide</a></p>
+		<hr/>
+		<h4>cdnjs</h4>
+		<p>Content delivery network.
+		<br/><a href="http://cdnjs.com">http://cdnjs.com</a></p>
+		</hr>
+	</div>
+	<div class="modal-footer">
+		<a href="#" data-dismiss="modal" class="btn">Close</a>
 	</div>
 </div>
 <div id="viewFileModal" class="modal hide fade">
 	<div class="modal-header">
-		<a data-dismiss="modal" class="close"></a>
 		<h4 id="title-filename">${filename}</h4>
 	</div>
 	<div class="modal-body" id="fileblock">
@@ -110,7 +152,9 @@
 <div class="container">
 	<div class="row">
 		<h3>hackedGaudi Online</h3>
-		<p class="description" style="font-size: small;">hackedGaudi is Gaudi ported to <a href="http://www.haxe.org">Haxe</a>. Below is the JavaScript targeted build, which you can run in your browser.</p>
+		<p class="description">
+		hackedGaudi is Gaudi ported to <a href="http://www.haxe.org">Haxe</a>.
+		Below is the JavaScript targeted build, which you can run in your browser.</p>
 		<div class="tabbable">
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#console_t" data-toggle="tab">Console</a></li>
@@ -151,7 +195,7 @@
 	</div>
 <div id="haxe:trace"></div>
 <footer>
-	<a href="#">License</a> | <a href="javascript:showCredits();">Credits</a>
+	<a href="javascript:showLicense();">License</a> | <a href="javascript:showCredits();">Credits</a>
 </footer>
 </body>
 </html>

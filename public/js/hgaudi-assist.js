@@ -1,6 +1,6 @@
 $(document).ready(function() {	
 		$("#command").focus();
-		$("#command").val("hgaudi -f data/build.json");
+		$("#command").val("hgaudi");
 		$('#command').typeahead({
 			name: 'commands-predict',
 			prefetch: 'data/commands.json',
@@ -33,14 +33,16 @@ $(document).ready(function() {
 			window.location.href = 'http://www.google.com';
 		});
 		
-		/*$.ajax({
-			url: "LICENSE",
+		$.ajax({
+			url: "data/license.txt",
 		}).done(function(text) {
-			text = text.replace(/\n/g, "<br/>");
-			$("#license-text").append(text);
-		});*/
-		showCredits();
+			//text = text.replace(/\n/g, "<br/>");
+			$("#licenseText").append(text);
+		});
 });
+function showLicense() {
+	$('#licenseModal').modal('show');
+}
 function showCredits() {
 	$('#creditsModal').modal('show');
 }
