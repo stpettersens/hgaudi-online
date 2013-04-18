@@ -24,7 +24,11 @@ app.set('view options', {
 	layout: false
 });
 app.get('/', hgroutes.getIndex);
+app.get('/api/input/!files', hgroutes.getAllInputFiles);
 app.get('/api/input/:filename', hgroutes.getInputFile);
+app.get('/api/input/contents/:filename', hgroutes.getInputFileContents);
+app.get('/api/execute/:program/:parameters', hgroutes.executeProgram);
+app.get('/api/execute/output/:program/:parameters', hgroutes.executeProgramOutput);
 db.open(function() {
 	hglib.createSocket(app);
 	app.listen(3000);

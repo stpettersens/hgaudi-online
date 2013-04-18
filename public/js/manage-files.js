@@ -62,12 +62,15 @@ $(document).ready(function() {
 				file_contents.push(data.files[i].contents);
 			}
 		}
+		else {
+			$('#i-file-list').empty();
+			$('#i-file-list').append('<strong>No files uploaded.</strong>');
+		}
 	});
 	$(document).on('change', '#addfiles', function(event) {
 		handleFileSelect(event);
 	});
 	$(document).on('shown', '#viewFileModal', function(event) {
-		console.log("pretty print!");
 		prettyPrint();
 	});
 	$(document).click(function() {
@@ -75,7 +78,6 @@ $(document).ready(function() {
 			if($(this).attr('checked')) {
 				$('#delbtn').removeAttr('disabled');
 				to_delete = $(this).attr('value');
-				console.log(to_delete);
 			}
 			else {
 				$('#delbtn').attr('disabled', 'disabled');
