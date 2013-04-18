@@ -1,6 +1,6 @@
 {
 		"name": "hgaudi-online"
-	,	"author": "Sam Saint-Pettersen <s.stpetterse+githubn@gmail.com>"
+	,	"author": "Sam Saint-Pettersen <s.stpettersen+github@gmail.com>"
 	,	"version": "0.0.1"
 	,	"private": "true"
 	,	"dependencies": {
@@ -8,9 +8,10 @@
 		,	"should": "1.0.0"
 		,	"ejs": "0.7.1"
 		,	"express": "2.5.8"
+		,	"cookies": "0.3.5"
 		,	"socket.io": "0.9.10"
 		,	"mongodb": "1.0.2"
 		,	"bson": "*"
-		,	"cookies": "0.3.5"
+		
 	}
 }
