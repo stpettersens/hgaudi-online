@@ -9,61 +9,45 @@ Released under the MIT/X11 License.
 
 var hglib = require('../lib/hglib')
 , db = require('../lib/db')
-, cookie = 'hgaudi.token'
-, allowed = [ 'g++', 'haxe', 'strip' ];
+, cookie = 'hgaudi.token';
 module.exports = {
 	getIndex: function(req, res) {
 		res.render('index');
 	},
-	getAllInputFiles: function(req, res) {
-		var tokenId = req.cookies.get(cookie);
-		db.find('ifiles', {tokenId:tokenId}, 100, function(err, files) {
-			if(files.length > 0) res.send(files);
-			else res.send('None found!');
-		});
+	getInput: function(req, res) {
+		getInputFile(req, res, false);
 	},
-	getInputFile: function(req, res) {
-		var filename = req.params.filename;
-		var tokenId = req.cookies.get(cookie);
-		db.findOne('ifiles', {filename:filename, tokenId:tokenId}, function(err, file) {
-			if(file != null) res.send(file);
-			else res.send('Not found!');
-		});
+	getInputContents: function(req, res) {
+		getInputFile(req, res, true);
 	},
-	getInputFileContents: function(req, res) {
-		var filename = req.params.filename;
-		var tokenId = req.cookies.get(cookie);
-		db.findOne('ifiles', {filename:filename, tokenId:tokenId}, function(err, file) {
-			if(file != null) res.send(file.contents);
-			else res.send('Not found!');
-		});
+	execute: function(req, res) {
+		executeProgram(req, res, false);
 	},
-	executeProgram: function(req, res) {
-		execute(req, res, false);
-	},
-	executeProgramOutput: function(req, res) {
-		execute(req, res, true);
+	executeOutput: function(req, res) {
+		executeProgram(req, res, true);
 	}
 }
-function execute(req, res, outputOnly) {
-		var program = req.params.program;
-		var parameters = req.params.parameters;
-		var tokenId = req.cookies.get(cookie);;
-		var allowRun = false;
-		for(var i = 0; i < allowed.length; i++) {
-			if(program == allowed[i]) {
-				allowRun = true;
-				break;
-			}
-		}
-		if(allowRun)  {
-			var pprogram = null;
-			if(parameters != 'null') pprogram = program  + ' ' + parameters;
-			var exec = require('child_process').exec, process;
-			process = exec(pprogram, function(err, stdout, stderr) {
-				if(!outputOnly) res.send({program:program, parameters:parameters, stdout:stdout, stderr:stderr});
-				else res.send(stdout + '\n' + stderr);
-			});
-		}
-		else res.send('Program denied!');
+function getInputFile(req, res, showContents) {
+	var filename = req.params.filename;
+	var tokenId = req.cookies.get(cookie);
+	db.findOne('ifiles', {filename:filename, tokenId:tokenId}, function(err, file) {
+		if(file != null && !showContents) res.send(file);
+		else if(file != null && showContents) res.send(file.contents);
+		else res.send('Not found!');
+	});
+}
+function executeProgram(req, res, onlyOutput) {
+	var tokenId = req.cookies.get(cookie);
+	var exec = require('child_process').exec, proc;
+	var program = req.params.program;
+	var parameters = req.params.parameters;
+	var vprog = program;
+	if(parameters != 'null') vprog = program + ' ' + parameters;
+	proc = exec(vprog, function(err, stdout, stderr) {
+		if(!onlyOutput)
+			res.send({tokenId:tokenId, program:program,
+			parameters:parameters, stdout:stdout, stderr:stderr});
+		else if(stdout != '' || stderr != '') res.send(stdout + '\n' + stderr);
+		else res.send();	
+	});
 }
