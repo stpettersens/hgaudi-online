@@ -20,11 +20,8 @@ module.exports = {
 	getInputContents: function(req, res) {
 		getInputFile(req, res, true);
 	},
-	execute: function(req, res) {
-		executeProgram(req, res, false);
-	},
 	executeOutput: function(req, res) {
-		executeProgram(req, res, true);
+		executeProgram(req, res);
 	}
 }
 function getInputFile(req, res, showContents) {
@@ -36,18 +33,20 @@ function getInputFile(req, res, showContents) {
 		else res.send('Not found!');
 	});
 }
-function executeProgram(req, res, onlyOutput) {
+function executeProgram(req, res) {
 	var tokenId = req.cookies.get(cookie);
-	var exec = require('child_process').exec, proc;
 	var program = req.params.program;
-	var parameters = req.params.parameters;
-	var vprog = program;
-	if(parameters != 'null') vprog = program + ' ' + parameters;
-	proc = exec(vprog, function(err, stdout, stderr) {
-		if(!onlyOutput)
-			res.send({tokenId:tokenId, program:program,
-			parameters:parameters, stdout:stdout, stderr:stderr});
-		else if(stdout != '' || stderr != '') res.send(stdout + '\n' + stderr);
-		else res.send();	
+	var parameters = req.params.parameters.split(' ');
+	db.findOne('ifiles', {filename:parameters[0], tokenId:tokenId}, function(err, file) {
+		var exec = require('child_process').exec, proc;
+		var contents = file.contents.split('\n');
+		switch(program) {
+			case 'g++':
+				program = 'g++ -Wall -o hw -xc++ -';
+		}
+		proc = exec('secho.py a "' + contents + '"|' + program, function(err, stdout, stderr) {
+			if(stdout != '' || stderr != '') res.send(stdout + '\n' + stderr);
+			else res.send();
+		})
 	});
 }

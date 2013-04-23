@@ -19,6 +19,7 @@ function viewFile(key, filename) {
 	$('#viewFileModal').modal('show');
 }
 function handleFileSelect(event) {
+	alert(htmlentities('blah & blah'));
 	var unique = true;
 	var files = event.target.files;
 	var output = [];

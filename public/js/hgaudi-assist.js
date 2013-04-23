@@ -25,22 +25,20 @@ $(document).ready(function() {
 
 		if($.cookie('hgaudi.token') == null) $('#cookiesNotif').modal('show');
 		$(document).on('click', '#proceed', function() {
-			$.cookie('hgaudi.token', _.guid(), { expires: 7 });
+			$.cookie('hgaudi.token', _.guid(), {expires: 7});
 			$('#cookiesNotif').modal('hide');
 		});
 		$(document).on('click', '#abandon', function() {
 			$.cookie('hgaudi.token', null, {path: '/'});
 			window.location.href = 'http://www.google.com';
 		});
-		
-		$.ajax({
-			url: "data/license.txt",
-		}).done(function(text) {
-			//text = text.replace(/\n/g, "<br/>");
-			$("#licenseText").append(text);
-		});
 });
 function showLicense() {
+	$.ajax({
+		url: 'data/license.txt',
+	}).done(function(text) {
+		$('#licenseText').append(text);
+	});
 	$('#licenseModal').modal('show');
 }
 function showCredits() {
