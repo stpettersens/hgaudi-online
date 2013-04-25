@@ -39,13 +39,7 @@ function executeProgram(req, res) {
 	var parameters = req.params.parameters.split(' ');
 	db.findOne('ifiles', {filename:parameters[0], tokenId:tokenId}, function(err, file) {
 		var exec = require('child_process').exec, proc;
-		var Entities = require('html-entities').XmlEntities;
-		var entities = new Entities();
 		var contents = file.contents.split('\n');
-		for(var i = 0; i < contents.length; i++) {
-			contents[i] = entities.encode(contents[i]);
-		}
-		console.log(contents);
 		switch(program) {
 			case 'g++':
 				program = 'g++ -Wall -o hw -xc++ -';

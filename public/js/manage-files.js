@@ -38,6 +38,10 @@ function handleFileSelect(event) {
 		};	
 		reader.readAsText(f);
 		socket.emit('setFilename', {filename:escape(f.name)});
+		var ext_re = new RegExp(/\.(\w+$)/gi);
+		var ext = ext_re.exec(f.name);
+		if(ext != null) ext = ext[1].toLowerCase();
+		socket.emit('setFileType', {filetype:escape(ext)});
 	}
 }
 $(document).ready(function() {
