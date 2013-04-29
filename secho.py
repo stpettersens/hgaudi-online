@@ -1,6 +1,8 @@
 """
 Super echo program
-When echo isn't enough.
+Copyright 2013 Sam Saint-Pettersen
+
+Released under the MIT License.
 """
 import sys
 import HTMLParser

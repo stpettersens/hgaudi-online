@@ -3,9 +3,6 @@ var file_contents = [];
 function loadInputFiles() {
 	socket.emit('pullInputFromDb', {tokenId:cookie});
 }
-function loadOutputFiles() {
-	socket.emit('pullOutputFromDb', {tokenId:cookie});
-}
 function removeInputFile(filename) {
 	var ans = confirm('Are you sure you want to delete this file?');
 	if(ans) {

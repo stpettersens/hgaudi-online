@@ -1,4 +1,3 @@
-hgaudi.js
-/hackedGaudi
+*.min.js
 node_modules
-
+dump
