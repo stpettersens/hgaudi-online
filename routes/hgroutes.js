@@ -22,12 +22,6 @@ module.exports = {
 	},
 	executeOutput: function(req, res) {
 		executeProgram(req, res);
-	},
-	getOutput: function(req, res) {
-		db.find('ofiles', {tokenId:req.cookies.get(cookie)}, 100, function(err, file) {
-			if(file != null) res.send(file);
-			else res.send('Not found!');
-		});
 	}
 }
 function getInputFile(req, res, showContents) {

@@ -3,10 +3,13 @@ var file_contents = [];
 function loadInputFiles() {
 	socket.emit('pullInputFromDb', {tokenId:cookie});
 }
+function loadOutputFiles() {
+	socket.emit('pullOutputFromDb', {tokenId:cookie});
+}
 function removeInputFile(filename) {
 	var ans = confirm('Are you sure you want to delete this file?');
 	if(ans) {
-		socket.emit('removeInputFromDb', {filename:filename});
+		socket.emit('removeInputFromDb', {tokenId:cookie, filename:filename});
 		loadInputFiles();
 	}
 }
@@ -50,23 +53,53 @@ $(document).ready(function() {
 		alert('The File APIs are not fully supported in this browser.');
 	}
 	loadInputFiles();
+	loadOutputFiles();
 	socket.on('populateInputList', function(data) {
+		$('#i-file-list').empty();
 		file_contents = [];
 		console.log(data.files);
 		if(data.files.length > 0) {
-			$('#i-file-list').empty();
-			for(var i = 0; i < data.files.length; i++) {
-				$('#i-file-list').append('<p><input type="checkbox" class="fcb" id="fcb' + i
-				+ '" value="' + data.files[i].filename + '"/> <a id="fhl' + i + '" href="javascript:viewFile(' + i + ',\'' 
-				+ data.files[i].filename + '\');">' + escape(data.files[i].filename) + '</a></p>');
+			$.each(data.files, function(i, item) {
+				var br  = $('<br/>');
+				var input = $('<input/>', {
+					type: 'checkbox',
+					class: 'fcb',
+					id: 'ifcb' + i,
+					value: item.filename
+				});
+				var a = $('<a/>', {
+					id: 'ifhl' + i,
+					href: 'javascript:viewFile(' + i + ', \'' + item.filename + '\')',
+					text: ' ' + escape(item.filename)
+				});
+				$('#i-file-list').append(input, a, br);
 				g_files_added = true;
-				file_contents.push(data.files[i].contents);
-			}
+				file_contents.push(item.contents);
+			});
 		}
-		else {
-			$('#i-file-list').empty();
-			$('#i-file-list').append('<strong>No files uploaded.</strong>');
+		else $('#i-file-list').append('<strong>No files uploaded.</strong>');
+	});
+	socket.on('populateOutputList', function(data) {
+		$('#o-file-list').empty();
+		console.log(data.files);
+		if(data.files.length > 0) {
+			$.each(data.files, function(i, item) {
+				var br = $('<br/>');
+				var input = $('<input/>', {
+					type: 'checkbox',
+					class: 'fcb',
+					id: 'ofcb' + i,
+					value: item.filename
+				});
+				var a = $('<a/>', {
+					id: 'ofhl' + i,
+					href: 'javascript:downloadFile(' + i + ', \'' + item.filename + '\')',
+					text: ' ' + escape(item.filename)
+				});
+				$('#o-file-list').append(input, a, br);
+			});
 		}
+		else $('#o-file-list').append('<strong>No files produced.</strong>');
 	});
 	$(document).on('change', '#addfiles', function(event) {
 		handleFileSelect(event);
@@ -85,6 +118,10 @@ $(document).ready(function() {
 				to_delete = null;
 			}
 		});
+	});
+	$(document).on('click', '#complete', function(event) {
+		console.log("Load output files...");
+		loadOutputFiles();
 	});
 	$(document).on('click', '#delbtn', function(event) {
 		removeInputFile(to_delete);

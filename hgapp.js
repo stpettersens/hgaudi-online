@@ -27,7 +27,6 @@ app.get('/', hgroutes.getIndex);
 app.get('/api/input/:filename', hgroutes.getInput)
 app.get('/api/input/contents/:filename', hgroutes.getInputContents);
 app.get('/api/execute/output/:program/:parameters', hgroutes.executeOutput);
-app.get('/api/output/get/', hgroutes.getOutput);
 
 db.open(function() {
 	hglib.createSocket(app);
