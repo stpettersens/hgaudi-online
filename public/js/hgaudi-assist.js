@@ -1,6 +1,11 @@
-$(document).ready(function() {	
-		$("#command").focus();
-		$("#command").val("hgaudi");
+$(document).ready(function() {
+		if($.browser.opera) {
+			$('#addfiles').css('display', 'inline');
+			$('#addbtn').css('display', 'none');
+		}
+
+		$('#command').focus();
+		$('#command').val("hgaudi");
 		$('#command').typeahead({
 			name: 'commands-predict',
 			prefetch: 'data/commands.json',
@@ -14,14 +19,10 @@ $(document).ready(function() {
 			engine: Hogan
 		});
 
-		$("#addbtn").click(function() {
+		$('#addbtn').click(function() {
 			$('#addfiles').trigger('click');
-		});	
 
-		if($.browser.mozilla) {
-			$("#enterCommand").css("margin-top", "11px");
-			$("#enterCommand").css("height", "50px");
-		}
+		});	
 
 		if($.cookie('hgaudi.token') == null) $('#cookiesNotif').modal('show');
 		$(document).on('click', '#proceed', function() {
