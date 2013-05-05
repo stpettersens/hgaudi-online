@@ -8,13 +8,15 @@
 
 	"build": [
 
-		{ "echo": "Minimizing client-side JavaScript..." },
-		{ "exec": "yuicompressor --nomunge public/js/hgaudi-assist.js -o public/js/hgaudi-assist.min.js" }
+		{ "echo": "Minimizing client-side JavaScript and CSS..." },
+		{ "exec": "yuicompressor --preserve-semi public/js/hgaudi-assist.js -o public/js/hgaudi-assist.min.js" },
+		{ "exec": "yuicompressor public/css/hgaudi.css -o public/css/hgaudi.min.css" }
 	],
 	
 	"clean": [
 
-		{ "echo": "Remove minimised client-side JavaScript..." },
+		{ "echo": "Remove minimised client-side JavaScript and CSS..." },
 		{ "erase": "public/js/hgaudi-assist.min.js" }
+		{ "erase": "public/css/hgaudi.min.css "}
 	]
 }
