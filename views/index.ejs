@@ -23,6 +23,11 @@
 <script type="text/javascript" src="/js/hgaudi.min.js"></script>
 </head>
 <body>
+<div id="fileapi-error" class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<p><strong>Error:</strong> Your browser does not fully support File API.
+	[<a href="http://caniuse.com/fileapi">File API browser support</a>]</p>
+</div>
 <div id="cookiesNotif" class="modal fade">
 	<div class="modal-header">
 		<h3>Okay to use cookies?</h3>
@@ -167,7 +172,7 @@
 	<div class="row">
 		<h3>hackedGaudi Online</h3>
 		<p class="description">
-		hackedGaudi is Gaudi ported to <a href="http://www.haxe.org">Haxe</a>.
+		hackedGaudi is Gaudi ported to Haxe.
 		Below is the JavaScript targeted build, which you can run in your browser.</p>
 		<div class="tabbable">
 			<ul class="nav nav-tabs">

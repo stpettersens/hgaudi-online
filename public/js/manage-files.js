@@ -50,7 +50,8 @@ $(document).ready(function() {
 	cookie = $.cookie('hgaudi.token');
 	if(window.File == null || window.FileReader == null || 
 	window.FileList == null | window.Blob == null) {
-		alert('The File APIs are not fully supported in this browser.');
+		$('#fileapi-error').css('display', 'block');
+		$('#fileapi-error').alert();
 	}
 	loadInputFiles();
 	loadOutputFiles();

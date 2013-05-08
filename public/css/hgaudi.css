@@ -34,7 +34,7 @@
 #enterCommand {
 	margin-bottom: -8px;
 }
-#addfiles {
+#fileapi-error, #addfiles {
 	display: none;
 }
 #i-file-list, #o-file-list, #licenseText {
