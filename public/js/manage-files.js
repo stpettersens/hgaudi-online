@@ -46,7 +46,7 @@ function handleFileSelect(event) {
 }
 $(document).ready(function() {
 	g_files_added = false;
-	socket = io.connect('http://localhost');
+	socket = io.connect('http://' + document.domain);
 	cookie = $.cookie('hgaudi.token');
 	if(window.File == null || window.FileReader == null || 
 	window.FileList == null | window.Blob == null) {
